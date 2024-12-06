@@ -22,7 +22,8 @@ public class MemberService {
         return userMapper.getAllMembers();
     }
 
-    public Member findMemberById(String id) {
-        return userMapper.findMemberById(id);
+    public Member findMemberById(String userId) {
+        List<Member> results = userMapper.findMemberById(userId);
+        return results.isEmpty() ? null : results.get(0);
     }
 }

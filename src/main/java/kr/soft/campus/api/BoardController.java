@@ -71,6 +71,17 @@ public class BoardController {
         return ResponseEntity.ok(responseData);
     }
 
+    @PostMapping("/modify")
+    public ResponseEntity<?> modify(@RequestBody BoardModifyReq req) {
+        ResponseData responseData = new ResponseData();
+        Board board = new Board();
+        board.setContent(req.getContent());
+        board.setTitle(req.getTitle());
+        board.setIdx(req.getBoardId());
+        boardService.update(req.memberId, board);
+
+        return ResponseEntity.ok(responseData);
+    }
 
 
     @Data
@@ -111,5 +122,13 @@ public class BoardController {
     static class BoardIdReq
     {
         private int boardId;
+    }
+
+    @Data
+    static class BoardModifyReq {
+        private int boardId;
+        private String title;
+        private String content;
+        private String memberId;
     }
 }
