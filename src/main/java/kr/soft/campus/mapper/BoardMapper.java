@@ -19,4 +19,6 @@ public interface BoardMapper {
   @Update("UPDATE board set title = #{title}, content = #{content}, good = #{good}, modified = #{modified}, modifiedBy = #{modifiedBy} where idx  = #{idx}")
   void update(Board board);
 
+  @Update("Update board set deleteYn='Y' where idx =#{boardIdx}")
+  void delete(int boardIdx);
 }

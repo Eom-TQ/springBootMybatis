@@ -83,6 +83,19 @@ public class BoardController {
         return ResponseEntity.ok(responseData);
     }
 
+    @PostMapping("/remove")
+    public ResponseEntity<?> remove(@RequestBody BoardIdReq
+                                            req) {
+        ResponseData responseData = new ResponseData();
+        logger.info("req: {}", req.getBoardId());
+        if(!boardService.remove(req.getBoardId())) {
+            responseData.setCode("500");
+            responseData.setMsg("null");
+        }
+
+        return ResponseEntity.ok(responseData);
+    }
+
 
     @Data
     static class BoardListRes {

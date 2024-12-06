@@ -80,4 +80,16 @@ public class BoardService {
 
         boardMapper.update(board);
     }
+
+    @Transactional
+    public boolean remove(int idx) {
+        logger.info("remove");
+
+        if(boardMapper.findById(idx) == null) {
+            return false;
+        }
+        boardMapper.delete(idx);
+
+        return true;
+    }
 }
