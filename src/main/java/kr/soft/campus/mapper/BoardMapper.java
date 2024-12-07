@@ -23,4 +23,6 @@ public interface BoardMapper {
 
   //@Update("Update board set deleteYn='Y' where idx =#{boardIdx}")
   void delete(int boardIdx);
+
+  void save(Board board);
 }

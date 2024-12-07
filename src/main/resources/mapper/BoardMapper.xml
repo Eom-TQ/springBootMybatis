@@ -43,4 +43,9 @@
         WHERE idx = #{boardIdx}
     </update>
 
+    <insert id="save" parameterType="Board">
+        INSERT into board (title, content,createdBy,modifiedBy)
+        values (#{title}, #{content}, #{createdBy}, #{modifiedBy})
+
+    </insert>
 </mapper>

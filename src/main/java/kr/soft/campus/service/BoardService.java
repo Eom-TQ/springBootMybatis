@@ -93,5 +93,16 @@ public class BoardService {
         return true;
     }
 
+    @Transactional
+    public void regist(Board board) {
+        logger.info("regist");
+
+        board.setCreatedBy(board.getCreatedBy());
+        board.setModifiedBy(board.getModifiedBy());
+
+        boardMapper.save(board);
+
+        logger.info("end");
+    }
 
 }

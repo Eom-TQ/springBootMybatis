@@ -96,6 +96,20 @@ public class BoardController {
         return ResponseEntity.ok(responseData);
     }
 
+    @PostMapping("/regist")
+    public ResponseEntity<ResponseData> regist(@RequestBody BoardRegistReq req) {
+        ResponseData responseData = new ResponseData();
+        Board board = new Board();
+        board.setContent(req.getContent());
+        board.setTitle(req.getTitle());
+        board.setCreatedBy(req.memberId);
+        board.setModifiedBy(req.memberId);
+
+        boardService.regist(board);
+
+        return ResponseEntity.ok(responseData);
+    }
+
 
     @Data
     static class BoardListRes {
@@ -140,6 +154,14 @@ public class BoardController {
     @Data
     static class BoardModifyReq {
         private int boardId;
+        private String title;
+        private String content;
+        private String memberId;
+    }
+
+    @Data
+    static class BoardRegistReq{
+
         private String title;
         private String content;
         private String memberId;
