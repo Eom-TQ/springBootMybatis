@@ -41,8 +41,8 @@ public class MemberController {
     @PostMapping("/findId")
     public ResponseEntity<?> getUserById(@RequestBody FindIdReq findIdReq) {
         ResponseData data = new ResponseData();
-        logger.info("find: {}", findIdReq.getId());
-        Member m = memberService.findMemberById(findIdReq.getId());
+        logger.info("find: {}", findIdReq.getUserId());
+        Member m = memberService.findMemberById(findIdReq.getUserId());
         if(m == null) {
             data.setData("Y");
         } else if( m != null) {
@@ -52,20 +52,34 @@ public class MemberController {
         return ResponseEntity.ok(data);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Member member) {
+
+        ResponseData data = new ResponseData();
+        logger.info("login: {}", member);
+        if(memberService.login(member))  {
+            data.setData("Y");
+        } else {
+            data.setData("N");
+        }
+
+        return ResponseEntity.ok(data);
+    }
+
     @Data
     static class FindIdReq {
-        private String id;
+        private String userId;
     }
 
     @Data
     static class MemberListRes {
         private long idx;
-        private String id;
+        private String userId;
         private String name;
         private String email;
         public MemberListRes(Member member) {
             this.idx = member.getIdx();
-            this.id = member.getId();
+            this.userId = member.getUserId();
             this.name = member.getName();
             this.email = member.getEmail();
         }

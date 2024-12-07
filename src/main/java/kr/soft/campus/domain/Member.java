@@ -9,9 +9,9 @@ import java.time.LocalDateTime;
 
 public class Member {
     private int idx;
-    private String id;
+    private String userId;
     private String name;
-    private String password;
+    private String userPw;
     private String email;
     private LocalDateTime createdAt;
 

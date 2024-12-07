@@ -12,18 +12,27 @@ import java.util.List;
 public class MemberService {
 
     @Autowired
-    private final MemberMapper userMapper;
+    private final MemberMapper memberMapper;
 
     public MemberService(MemberMapper userMapper) {
-        this.userMapper = userMapper;
+        this.memberMapper = userMapper;
     }
 
     public List<Member> getAllUsers() {
-        return userMapper.getAllMembers();
+        return memberMapper.getAllMembers();
     }
 
     public Member findMemberById(String userId) {
-        List<Member> results = userMapper.findMemberById(userId);
-        return results.isEmpty() ? null : results.get(0);
+        Member results = memberMapper.findMemberById(userId);
+        return results == null ? null : results;
+    }
+
+    public boolean login(Member member) {
+        Member member1 = memberMapper.findMemberById(member.getUserId());
+        if(member1 != null && member1.getUserPw().equals(member.getUserPw())) {
+            return true;
+        }
+
+        return false;
     }
 }

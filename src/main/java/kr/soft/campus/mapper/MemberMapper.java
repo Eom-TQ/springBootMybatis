@@ -13,7 +13,7 @@ public interface MemberMapper {
     List<Member> getAllMembers();
 
     //@Select("SELECT id, name, password, email, created_at as createdAt FROM members WHERE id = #{id}")
-    List<Member> findMemberById(String id);
+    Member findMemberById(String id);
 
 
 }

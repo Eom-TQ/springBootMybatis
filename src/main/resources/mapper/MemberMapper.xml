@@ -5,7 +5,7 @@
 
 <mapper namespace="kr.soft.campus.mapper.MemberMapper">
     <select id="getAllMembers" resultType="Member">
-        SELECT id, name, password, email, created_at
+        SELECT idx, id as userId, name, password, email, created_at
         FROM members;
     </select>
 
