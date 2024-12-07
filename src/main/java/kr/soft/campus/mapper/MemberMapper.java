@@ -9,10 +9,10 @@ import java.util.List;
 
 @Mapper
 public interface MemberMapper {
-    @Select(" SELECT idx, id, name, password, email, created_at as createdAt FROM members")
+    //@Select(" SELECT idx, id, name, password, email, created_at as createdAt FROM members")
     List<Member> getAllMembers();
 
-    @Select("SELECT id, name, password, email, created_at as createdAt FROM members WHERE id = #{id}")
+    //@Select("SELECT id, name, password, email, created_at as createdAt FROM members WHERE id = #{id}")
     List<Member> findMemberById(String id);
 
 

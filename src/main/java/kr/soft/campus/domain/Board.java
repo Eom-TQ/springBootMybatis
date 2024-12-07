@@ -1,9 +1,12 @@
 package kr.soft.campus.domain;
 
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
+
 import java.time.LocalDateTime;
 
 @Data
+
 public class Board {
     private int idx;                   // 게시판 idx
     private String title;               // 제목
