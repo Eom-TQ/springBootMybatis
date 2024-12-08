@@ -17,6 +17,7 @@ import static java.util.stream.Collectors.toList;
 
 @RestController
 @RequestMapping("/api/board")
+@CrossOrigin(origins = "http://localhost:3000")
 public class BoardController {
 
 
@@ -161,7 +162,6 @@ public class BoardController {
 
     @Data
     static class BoardRegistReq{
-
         private String title;
         private String content;
         private String memberId;

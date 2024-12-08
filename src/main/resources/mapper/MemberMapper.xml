@@ -10,7 +10,7 @@
     </select>
 
     <select id="findMemberById" resultType="Member">
-        SELECT * FROM members WHERE id = #{id}
+        SELECT idx, id as userId, name, password as userPw, email, created_at FROM members WHERE id = #{id}
     </select>
 
     <insert id="regist" parameterType="Member">
