@@ -14,8 +14,8 @@ public class MemberService {
     @Autowired
     private final MemberMapper memberMapper;
 
-    public MemberService(MemberMapper userMapper) {
-        this.memberMapper = userMapper;
+    public MemberService(MemberMapper memberMapper) {
+        this.memberMapper = memberMapper;
     }
 
     public List<Member> getAllUsers() {
@@ -32,7 +32,10 @@ public class MemberService {
         if(member1 != null && member1.getUserPw().equals(member.getUserPw())) {
             return true;
         }
-
         return false;
+    }
+
+    public void registeMember(Member member) {
+        memberMapper.regist(member);
     }
 }

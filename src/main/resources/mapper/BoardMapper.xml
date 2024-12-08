@@ -48,4 +48,5 @@
         values (#{title}, #{content}, #{createdBy}, #{modifiedBy})
 
     </insert>
+
 </mapper>

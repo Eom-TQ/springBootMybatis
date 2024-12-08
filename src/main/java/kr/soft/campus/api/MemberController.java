@@ -66,6 +66,44 @@ public class MemberController {
         return ResponseEntity.ok(data);
     }
 
+    @PostMapping("/regist")
+    public ResponseEntity<?> regist(@RequestBody MemberRegistReq memberRegistReq) {
+        ResponseData data = new ResponseData();
+        logger.info("regist: {}", memberRegistReq);
+
+        Member m = memberService.findMemberById(memberRegistReq.getUserId());
+
+        if(m == null) {
+            Member member = memberRegistReq.getMember();
+            memberService.registeMember(member);
+            data.setMsg("success");
+            data.setData("생성됨");
+        } else {
+            data.setCode("500");
+            data.setMsg("fail");
+            data.setData("fail");
+        }
+
+        return ResponseEntity.ok(data);
+    }
+
+    @Data
+    static class MemberRegistReq {
+        private String userId;
+        private String userPw;
+        private String userName;
+        private String email;
+
+        public Member getMember() {
+            Member member = new Member();
+            member.setUserId(userId);
+            member.setUserPw(userPw);
+            member.setName(userName);
+            member.setEmail(email);
+            return member;
+        }
+    }
+
     @Data
     static class FindIdReq {
         private String userId;

@@ -15,5 +15,5 @@ public interface MemberMapper {
     //@Select("SELECT id, name, password, email, created_at as createdAt FROM members WHERE id = #{id}")
     Member findMemberById(String id);
 
-
+    void regist(Member member);
 }

@@ -13,4 +13,8 @@
         SELECT * FROM members WHERE id = #{id}
     </select>
 
+    <insert id="regist" parameterType="Member">
+        Insert into members (id, name, password, email, created_at)
+        VALUES (#{userId}, #{name}, #{userPw}, #{email}, CURRENT_TIMESTAMP);
+    </insert>
 </mapper>
